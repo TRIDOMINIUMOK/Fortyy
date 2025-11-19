@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Поиск игр — FORTY</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      /* Сделаем body флекс-контейнером */
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh; /* Чтобы занимал всю высоту окна */
+        margin: 0; /* Убираем отступы по умолчанию */
+      }
+
+      /* Основной контент растягиваем */
+      .home-wrapper {
+        flex: 1; /* Занимает всё доступное пространство */
+      }
+
+      /* Подвал */
+      .footer {
+        background: #1a2d42;
+        color: #fff;
+        text-align: center;
+        padding: 20px 10px;
+      }
+      /* Контейнер с результатами и фильтрами */
+      .search-wrapper {
+        display: flex;
+        gap: 30px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-bottom: 40px;
+      }
+
+      /* Левая часть: карточки игр */
+      .search-results {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        flex: 1 1 600px;
+      }
+
+      .game-card {
+        background: #1a2d42;
+        border-radius: 16px;
+        overflow: hidden;
+        width: 220px;
+        padding-bottom: 10px;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.2s, box-shadow 0.3s;
+      }
+
+      .game-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+      }
+
+      .game-card img {
+        width: 100%;
+        height: 140px;
+        object-fit: cover;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .game-card h3 {
+        font-size: 18px;
+        margin: 10px 10px 5px;
+      }
+
+      .game-card .status {
+        font-size: 14px;
+        opacity: 0.7;
+        margin: 0 10px 5px;
+      }
+
+      .game-card .description {
+        font-size: 13px;
+        color: #ccc;
+        margin: 0 10px 10px;
+        line-height: 1.3;
+      }
+
+      /* Правая часть: блок фильтров */
+      .filters-block {
+        background: #1a2d42;
+        padding: 25px 20px;
+        border-radius: 20px;
+        width: 280px;
+        min-width: 220px;
+        flex-shrink: 0;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .filters-block h3 {
+        margin: 0 0 10px;
+        font-size: 22px;
+        font-weight: 600;
+        color: #34baff;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        padding-bottom: 8px;
+      }
+
+      .filters-block label {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 14px;
+        gap: 10px;
+        cursor: pointer;
+      }
+
+      .filters-block select {
+        width: 100%;
+        padding: 10px 12px;
+        border-radius: 12px;
+        border: none;
+        background: #0a182b;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .filters-block select:hover {
+        box-shadow: 0 0 5px #34baff;
+      }
+
+      .filters-block select:focus {
+        outline: none;
+        box-shadow: 0 0 5px #1da1e5;
+      }
+
+      .filters-block input[type="checkbox"] {
+        width: 18px;
+        height: 18px;
+        accent-color: #34baff;
+        cursor: pointer;
+      }
+
+      .checkbox-group {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 5px;
+      }
+
+      .apply-filters {
+        margin-top: 10px;
+        padding: 12px 0;
+        background: #34baff;
+        color: #fff;
+        border: none;
+        border-radius: 12px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.3s, transform 0.2s;
+      }
+
+      .apply-filters:hover {
+        background: #1da1e5;
+        transform: scale(1.05);
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="logo-block">
+        <div class="logo-num">40</div>
+        <div class="logo-text">FORTY</div>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">Главная</a>
+        <a href="search.html" class="active">Поиск</a>
+        <a href="cart.html">Корзина</a>
+        <a href="login.html">Вход</a>
+        <a href="register.html">Регистрация</a>
+      </nav>
+    </header>
+
+    <div class="home-wrapper">
+      <h1 class="home-title">Поиск игр</h1>
+
+      <div class="search-wrapper">
+        <!-- Левая часть: результаты -->
+        <div class="search-results">
+          <div class="game-card">
+            <img
+              src="https://i.ytimg.com/vi/W1gTb4Hi9ig/maxresdefault.jpg"
+              alt="S.T.A.L.K.E.R 2077"
+            />
+            <h3>S.T.A.L.K.E.R 2077</h3>
+            <p class="status">129 РУБ.</p>
+            <p class="description">
+              Постапокалиптический шутер с открытым миром, исследуйте Зону и
+              выполняйте опасные задания.
+            </p>
+          </div>
+
+          <div class="game-card">
+            <img
+              src="https://avatars.mds.yandex.net/get-mpic/4080439/img_id4044446556016369035.jpeg/orig"
+              alt="ДИКАЯ ОХОТА 9"
+            />
+            <h3>ДИКАЯ ОХОТА 9</h3>
+            <p class="status">1499 РУБ.</p>
+            <p class="description">
+              Фэнтези-RPG с эпическим сюжетом, охота на монстров и глубокая
+              система прокачки.
+            </p>
+          </div>
+
+          <div class="game-card">
+            <img
+              src="https://i.ytimg.com/vi/OKKT5LUcohM/maxresdefault.jpg"
+              alt="P.E.P.O"
+            />
+            <h3>P.E.P.O</h3>
+            <p class="status">31 РУБ.</p>
+            <p class="description">
+              Аркадная головоломка с уникальными механиками и веселой графикой.
+            </p>
+          </div>
+
+          <div class="game-card">
+            <img
+              src="https://cdn6.aptoide.com/imgs/6/3/d/63d24bbc9312249ce44760bdcf63fc1c_fgraphic.png"
+              alt="ТЕРРАКРАФТ"
+            />
+            <h3>ТЕРРАКРАФТ</h3>
+            <p class="status">99 РУБ.</p>
+            <p class="description">
+              Песочница для строительства и выживания с бесконечными
+              возможностями для творчества.
+            </p>
+          </div>
+        </div>
+
+        <!-- Правая часть: фильтры -->
+        <div class="filters-block">
+          <h3>Фильтры</h3>
+
+          <label>
+            Жанр:
+            <select>
+              <option>Все</option>
+              <option>Экшн</option>
+              <option>РПГ</option>
+              <option>Гонки</option>
+              <option>Стратегия</option>
+            </select>
+          </label>
+
+          <label>
+            Цена:
+            <select>
+              <option>Все</option>
+              <option>Бесплатно</option>
+              <option>До 500 РУБ</option>
+              <option>500–1000 РУБ</option>
+              <option>Свыше 1000 РУБ</option>
+            </select>
+          </label>
+
+          <div class="checkbox-group">
+            <label><span>Только новые</span> <input type="checkbox" /></label>
+            <label><span>Скидки</span> <input type="checkbox" /></label>
+            <label><span>Популярные</span> <input type="checkbox" /></label>
+          </div>
+
+          <button class="apply-filters">Применить фильтры</button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      © 2025 FORTY. Все права сохранены. Политика конфиденциальности | Возвраты
+      | Cookie
+    </footer>
+  </body>
+</html>

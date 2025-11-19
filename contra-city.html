@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Контра Сити — FORTY</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <style>
+      /* ========== БАЗОВЫЕ ========== */
+      :root {
+        --bg: #0a182b;
+        --panel: #1a2d42;
+        --accent: #34baff;
+        --muted: #ccc;
+        --glass: #0a182b;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto,
+          "Helvetica Neue", Arial;
+        background: var(--bg);
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh; /* чтобы футер прилипал */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      /* ========== TOPBAR (как на главной) ========== */
+      header.topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 14px 28px;
+        background: var(--panel);
+      }
+      .logo-block {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .logo-num {
+        background: transparent;
+        color: var(--accent);
+        font-weight: 600;
+        font-size: 20px;
+      }
+      .logo-text {
+        font-weight: 600;
+        font-size: 18px;
+      }
+      nav.nav-links a {
+        color: #fff;
+        text-decoration: none;
+        margin-left: 18px;
+        font-weight: 400;
+      }
+      nav.nav-links a.active {
+        color: var(--accent);
+      }
+
+      /* ========== КОНТЕЙНЕР СТРАНИЦЫ ========== */
+      .game-page-wrapper {
+        flex: 1; /* растягивает контент и держит футер внизу */
+        padding: 28px;
+        display: flex;
+        flex-direction: column;
+        gap: 26px;
+      }
+
+      /* ========== БЛОК ВЕРХА: видео + правый сайдбар ========== */
+      .game-top {
+        display: flex;
+        gap: 26px;
+        align-items: flex-start;
+        flex-wrap: wrap;
+      }
+
+      /* Видео (лево) - визуально как большая карточка с тенью, закруглениями) */
+      .game-video {
+        flex: 1 1 640px;
+        min-width: 280px;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.02),
+          transparent
+        );
+        padding: 12px;
+        border-radius: 16px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .video-cover {
+        width: 100%;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.04);
+      }
+      .video-cover video,
+      .video-cover img {
+        display: block;
+        width: 100%;
+        height: 420px;
+        object-fit: cover;
+        background: #000;
+      }
+      .video-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+      }
+      .video-title {
+        font-size: 20px;
+        color: var(--accent);
+        font-weight: 600;
+        margin: 0;
+      }
+      .video-badges {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+      }
+      .badge {
+        padding: 8px 12px;
+        border-radius: 12px;
+        font-size: 13px;
+        font-weight: 600;
+        background: rgba(255, 255, 255, 0.03);
+        color: var(--muted);
+        border: 1px solid rgba(255, 255, 255, 0.02);
+      }
+      .free-btn {
+        background: transparent;
+        border: 2px solid var(--accent);
+        color: var(--accent);
+        padding: 8px 12px;
+        border-radius: 12px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      .free-btn:hover {
+        background: var(--accent);
+        color: #000;
+        transform: scale(1.03);
+      }
+
+      /* ========== ПРАВАЯ КОЛОНКА: большой вертикальный блок с ценой/кнопками ========== */
+      .game-actions {
+        width: 320px;
+        min-width: 240px;
+        background: var(--panel);
+        border-radius: 16px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.55);
+        align-self: flex-start;
+      }
+
+      .game-actions .title {
+        font-size: 22px;
+        color: var(--accent);
+        margin: 0;
+        font-weight: 600;
+      }
+      .price-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .price-current {
+        font-size: 24px;
+        font-weight: 700;
+        color: #fff;
+      }
+      .price-old {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.35);
+        text-decoration: line-through;
+      }
+      .platforms {
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      .actions-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 6px;
+      }
+      .btn {
+        padding: 14px;
+        border-radius: 12px;
+        border: none;
+        font-weight: 700;
+        font-size: 15px;
+        cursor: pointer;
+        transition: transform 0.14s ease, box-shadow 0.14s;
+      }
+      .btn:active {
+        transform: translateY(1px);
+      }
+      .buy-btn {
+        background: var(--accent);
+        color: #051219;
+        box-shadow: 0 6px 18px rgba(52, 186, 255, 0.12);
+      }
+      .buy-btn:hover {
+        transform: scale(1.02);
+      }
+      .cart-btn {
+        background: transparent;
+        color: var(--accent);
+        border: 2px solid var(--accent);
+        font-weight: 700;
+      }
+      .cart-btn:hover {
+        background: var(--accent);
+        color: #051219;
+      }
+
+      .meta-list {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        font-size: 13px;
+        color: var(--muted);
+      }
+      .meta-list span {
+        display: flex;
+        justify-content: space-between;
+        gap: 8px;
+      }
+
+      /* ========== ОПИСАНИЕ (низ страницы) ========== */
+      .game-description {
+        background: var(--panel);
+        border-radius: 16px;
+        padding: 20px;
+        color: var(--muted);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.55);
+        line-height: 1.5;
+      }
+      .game-description h3 {
+        margin: 0 0 8px;
+        color: var(--accent);
+        font-size: 18px;
+      }
+
+      /* дополнительные блоки — скриншоты / системки */
+      .screenshots {
+        display: flex;
+        gap: 12px;
+        margin-top: 6px;
+        overflow: auto;
+        padding-bottom: 6px;
+      }
+      .screenshot {
+        min-width: 220px;
+        height: 120px;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.04);
+      }
+      .screenshot img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      /* ========== ФУТЕР ========== */
+      footer.footer {
+        background: var(--panel);
+        padding: 18px 14px;
+        text-align: center;
+        color: #fff;
+      }
+
+      /* ========== АДАПТИВ ========== */
+      @media (max-width: 1000px) {
+        .video-cover video,
+        .video-cover img {
+          height: 320px;
+        }
+        .game-actions {
+          width: 300px;
+        }
+      }
+      @media (max-width: 820px) {
+        .game-top {
+          flex-direction: column;
+        }
+        .game-actions {
+          width: 100%;
+        }
+        .video-cover video,
+        .video-cover img {
+          height: 260px;
+        }
+      }
+      @media (max-width: 420px) {
+        .video-cover video,
+        .video-cover img {
+          height: 200px;
+        }
+        .buy-btn,
+        .cart-btn {
+          padding: 12px;
+          font-size: 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="logo-block">
+        <div class="logo-num">40</div>
+        <div class="logo-text">FORTY</div>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html" class="active">Главная</a>
+        <a href="search.html">Поиск</a>
+        <a href="cart.html">Корзина</a>
+         <a href="profile.html">Профиль</a>
+        <a href="login.html">Вход</a>
+        <a href="register.html">Регистрация</a>
+      </nav>
+    </header>
+
+    <main class="game-page-wrapper">
+      <section class="game-top">
+        <!-- ЛЕВАЯ ЧАСТЬ: видео + скриншоты -->
+        <div class="game-video" aria-label="Видео и скриншоты Контра Сити">
+          <div class="video-cover">
+            <!-- можно заменить на реальный mp4 или оставить видео/картинку -->
+            <video
+              controls
+              poster="https://i.ytimg.com/vi/URfcrPGNM1A/maxresdefault.jpg"
+            >
+              <source
+                src="https://www.w3schools.com/html/mov_bbb.mp4"
+                type="video/mp4"
+              />
+              Ваш браузер не поддерживает видео.
+            </video>
+          </div>
+
+          <div class="video-meta">
+            <div>
+              <h3 class="video-title">Контра Сити</h3>
+              <div style="font-size: 13px; color: var(--muted)">
+                Экшен · Онлайн · PvP
+              </div>
+            </div>
+
+            <div class="video-badges">
+              <div class="badge">Онлайн</div>
+              <button class="free-btn">БЕСПЛАТНО</button>
+            </div>
+          </div>
+
+          <div class="screenshots" aria-hidden="false">
+            <div class="screenshot">
+              <img
+                src="https://i.ytimg.com/vi/URfcrPGNM1A/maxresdefault.jpg"
+                alt="scr1"
+              />
+            </div>
+            <div class="screenshot">
+              <img
+                src="https://avatars.mds.yandex.net/i?id=63b4258a6a99c2c0cb558447ee622f1d-5194866-images-thumbs&n=13"
+                alt="scr2"
+              />
+            </div>
+            <div class="screenshot">
+              <img
+                src="https://avatars.mds.yandex.net/i?id=5e92ba61f60e6f9c4447b55a1d01dbadd04988a7-5886377-images-thumbs&n=13"
+                alt="scr3"
+              />
+            </div>
+            <div class="screenshot">
+              <img
+                src="https://i.ytimg.com/vi/nuzEtgZGLHw/maxresdefault.jpg"
+                alt="scr4"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- ПРАВАЯ ЧАСТЬ: блок покупки/инфо -->
+        <aside class="game-actions" aria-label="Купить Контра Сити">
+          <div>
+            <h2 class="title">Контра Сити</h2>
+            <div class="price-row">
+              <div class="price-current">БЕСПЛАТНО</div>
+              <!-- если есть старая цена: -->
+              <!-- <div class="price-old">1499 РУБ.</div> -->
+            </div>
+            <div class="platforms">Windows • macOS • Онлайн</div>
+          </div>
+
+          <div class="actions-buttons">
+            <button
+              class="btn buy-btn"
+              type="button"
+              onclick="window.location.href='cart.html'"
+            >
+              Купить
+            </button>
+            <button
+              class="btn cart-btn"
+              type="button"
+              onclick="window.location.href='cart.html'"
+            >
+              В корзину
+            </button>
+          </div>
+
+          <div class="meta-list" aria-hidden="false">
+            <span><strong>Разработчик</strong><em> Studio X</em></span>
+            <span><strong>Издатель</strong><em> FORTY</em></span>
+            <span><strong>Режимы</strong><em> PvP, Кооп</em></span>
+            <span><strong>Дата релиза</strong><em> 2024-11-01</em></span>
+          </div>
+        </aside>
+      </section>
+
+      <!-- НИЗ: ОПИСАНИЕ -->
+      <section class="game-description">
+        <h3>Описание</h3>
+        <p>
+          Контра Сити — динамичный мультиплеерный шутер с быстрыми матчами и
+          напряжёнными командными боями. Игроки объединяются в команды, выбирают
+          снаряжение, выполняют задачи и сражаются на разнообразных картах. Игра
+          предлагает множество режимов, кастомизацию оружия и обширную систему
+          прокачки.
+        </p>
+
+        <h3 style="margin-top: 14px">Особенности</h3>
+        <ul style="color: var(--muted); margin: 8px 0 0 18px; line-height: 1.6">
+          <li>Молниеносный PvP и кооперативные миссии</li>
+          <li>Разнообразие карт и режимов</li>
+          <li>Кастомизация оружия и экипировки</li>
+          <li>Еженедельные события и рейтинговые сезоны</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="footer">
+      © 2025 FORTY. Все права сохранены. Политика конфиденциальности | Возвраты
+      | Cookie
+    </footer>
+  </body>
+</html>

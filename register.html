@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Регистрация — FORTY</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      /* Общие настройки для всего body */
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh; /* Занимает всю высоту окна */
+        margin: 0;
+      }
+
+      /* Основной контент растягиваем */
+      .login-wrapper {
+        flex: 1; /* Занимает всё доступное пространство */
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* Выравнивание формы по центру вертикально */
+        align-items: center;
+        padding: 40px 20px;
+        background: #0a182b;
+        color: #fff;
+      }
+
+      /* Форма регистрации */
+      .login-form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+        max-width: 400px;
+        background: #1a2d42;
+        padding: 30px;
+        border-radius: 16px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+      }
+
+      .login-form label {
+        display: flex;
+        flex-direction: column;
+        font-size: 14px;
+      }
+
+      .input {
+        margin-top: 6px;
+        padding: 10px 12px;
+        border-radius: 12px;
+        border: none;
+        background: #0a182b;
+        color: #fff;
+        font-size: 16px;
+      }
+
+      .submit-btn {
+        padding: 12px 0;
+        background: #34baff;
+        color: #fff;
+        border: none;
+        border-radius: 12px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.3s, transform 0.2s;
+      }
+
+      .submit-btn:hover {
+        background: #1da1e5;
+        transform: scale(1.05);
+      }
+
+      .switch-link {
+        margin-top: 10px;
+        color: #34baff;
+        text-decoration: none;
+        font-size: 14px;
+        text-align: center;
+      }
+
+      .switch-link:hover {
+        text-decoration: underline;
+      }
+
+      /* Подвал */
+      .footer {
+        background: #1a2d42;
+        color: #fff;
+        text-align: center;
+        padding: 20px 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Верхняя панель -->
+    <header class="topbar">
+      <div class="logo-block">
+        <div class="logo-num">40</div>
+        <div class="logo-text">FORTY</div>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">Главная</a>
+        <a href="search.html">Поиск</a>
+        <a href="cart.html">Корзина</a>
+        <a href="profile.html">Профиль</a>
+        <a href="login.html">Вход</a>
+        <a href="register.html" class="active">Регистрация</a>
+      </nav>
+    </header>
+
+    <main class="login-wrapper">
+      <h1 class="login-title">Регистрация</h1>
+      <p class="login-subtitle">Введите данные для создания аккаунта</p>
+
+      <form class="login-form" action="#" method="post">
+        <label
+          >Почта
+          <input type="email" class="input" name="email" required />
+        </label>
+        <label
+          >Имя пользователя
+          <input type="text" class="input" name="username" required />
+        </label>
+        <label
+          >Пароль
+          <input type="password" class="input" name="password" required />
+        </label>
+        <label
+          >Повторите пароль
+          <input
+            type="password"
+            class="input"
+            name="password_confirm"
+            required
+          />
+        </label>
+
+        <button type="submit" class="submit-btn">Завершить</button>
+        <a href="login.html" class="switch-link">Уже есть аккаунт? Войти</a>
+      </form>
+    </main>
+
+    <footer class="footer">
+      © 2025 FORTY. Все права сохранены. Политика конфиденциальности | Возвраты
+      | Cookie
+    </footer>
+  </body>
+</html>

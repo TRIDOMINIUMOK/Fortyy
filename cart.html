@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Корзина — Контра Сити | FORTY</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <style>
+      :root {
+        --bg: #0a182b;
+        --panel: #1a2d42;
+        --accent: #34baff;
+        --muted: #ccc;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background: var(--bg);
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      /* Topbar */
+      .topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 14px 28px;
+        background: var(--panel);
+        flex-shrink: 0;
+      }
+      .logo-block {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .logo-num {
+        font-weight: 600;
+        color: var(--accent);
+        font-size: 20px;
+      }
+      .logo-text {
+        font-weight: 600;
+        font-size: 18px;
+      }
+      .nav-links a {
+        color: #fff;
+        text-decoration: none;
+        margin-left: 18px;
+      }
+      .nav-links a.active {
+        color: var(--accent);
+        font-weight: 600;
+      }
+
+      /* Контейнер корзины */
+      .cart-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        flex: 1;
+        padding: 30px;
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      /* Блок оплаты */
+      .cart-payment {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        background: var(--panel);
+        padding: 20px;
+        border-radius: 16px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+      }
+      .cart-payment h3 {
+        margin: 0 0 12px;
+        color: var(--accent);
+        font-size: 22px;
+      }
+      .payment-methods {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .payment-methods label {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 16px;
+        padding: 12px 16px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.02);
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+      .payment-methods label:hover {
+        background: rgba(52, 186, 255, 0.2);
+      }
+      .payment-methods input {
+        accent-color: var(--accent);
+      }
+      .total {
+        font-weight: 700;
+        font-size: 22px;
+        margin-top: 10px;
+        text-align: right;
+      }
+      .buy-btn {
+        padding: 14px;
+        background: var(--accent);
+        border: none;
+        border-radius: 12px;
+        color: #051219;
+        font-weight: 700;
+        font-size: 16px;
+        cursor: pointer;
+        transition: transform 0.14s ease;
+        width: 100%;
+      }
+      .buy-btn:hover {
+        transform: scale(1.03);
+      }
+
+      /* Блок игры */
+      .cart-game {
+        display: flex;
+        background: var(--panel);
+        border-radius: 16px;
+        padding: 20px;
+        gap: 20px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+        align-items: center;
+      }
+      .cart-game img {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 12px;
+      }
+      .cart-game-info {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .cart-game-info h2 {
+        margin: 0;
+        color: var(--accent);
+        font-size: 26px;
+      }
+      .cart-game-info .platforms {
+        font-size: 16px;
+        color: var(--muted);
+      }
+      .cart-game-info .price {
+        font-weight: 700;
+        font-size: 24px;
+        color: #fff;
+      }
+
+      /* Футер */
+      footer.footer {
+        background: var(--panel);
+        padding: 18px 14px;
+        text-align: center;
+        color: #fff;
+        flex-shrink: 0;
+        margin-top: auto;
+      }
+
+      /* Адаптив */
+      @media (max-width: 600px) {
+        .cart-game {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+        .cart-game img {
+          width: 180px;
+          height: 180px;
+        }
+        .cart-game-info h2 {
+          font-size: 22px;
+        }
+        .cart-game-info .price {
+          font-size: 22px;
+        }
+        .cart-payment h3 {
+          font-size: 20px;
+        }
+        .buy-btn {
+          font-size: 14px;
+          padding: 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="logo-block">
+        <div class="logo-num">40</div>
+        <div class="logo-text">FORTY</div>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html">Главная</a>
+        <a href="search.html">Поиск</a>
+        <a href="cart.html" class="active">Корзина</a>
+        <a href="profile.html">Профиль</a>
+        <a href="login.html">Вход</a>
+        <a href="register.html">Регистрация</a>
+        
+      </nav>
+    </header>
+
+    <main class="cart-wrapper">
+      <!-- Блок оплаты (сверху) -->
+      <div class="cart-payment">
+        <h3>Выберите способ оплаты</h3>
+        <div class="payment-methods">
+          <label><input type="radio" name="pay" checked /> Карта</label>
+          <label><input type="radio" name="pay" /> PayPal</label>
+          <label><input type="radio" name="pay" /> Qiwi</label>
+        </div>
+        <div class="total">Итого: БЕСПЛАТНО</div>
+        <button class="buy-btn">Купить</button>
+      </div>
+
+      <!-- Блок игры (под оплатой) -->
+      <div class="cart-game">
+        <img
+          src="https://i.ytimg.com/vi/URfcrPGNM1A/maxresdefault.jpg"
+          alt="Контра Сити"
+        />
+        <div class="cart-game-info">
+          <h2>Контра Сити</h2>
+          <div class="platforms">Windows • macOS • Онлайн</div>
+          <div class="price">БЕСПЛАТНО</div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      © 2025 FORTY. Все права сохранены. Политика конфиденциальности | Возвраты
+      | Cookie
+    </footer>
+  </body>
+</html>

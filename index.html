@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Главная — FORTY</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="logo-block">
+        <div class="logo-num">40</div>
+        <div class="logo-text">FORTY</div>
+      </div>
+      <nav class="nav-links">
+        <a href="index.html" class="active">Главная</a>
+        <a href="search.html">Поиск</a>
+        <a href="cart.html">Корзина</a>
+        <a href="profile.html">Профиль</a>
+        <a href="login.html">Вход</a>
+        <a href="register.html">Регистрация</a>
+      </nav>
+    </header>
+
+    <div class="home-wrapper">
+      <h1 class="home-title">Популярное и рекомендуемое</h1>
+
+      <!-- Большой слайдер -->
+      <div class="big-card">
+        <button class="arrow-btn prev">◀</button>
+        <div class="card-slider-wrapper">
+          <div class="card-slider">
+            <div class="card-content">
+              <img
+                src="https://i.ytimg.com/vi/URfcrPGNM1A/maxresdefault.jpg"
+                class="big-img"
+              />
+              <div class="card-info">
+                <h2 class="game-name">Контра Сити</h2>
+                <div class="game-status">Уже доступно</div>
+                <a href="contra-city.html" class="free-btn">Бесплатно</a>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <img
+                src="https://gameguru.ru/media/f/screens/3/7/3/57/849.jpg"
+                class="big-img"
+              />
+              <div class="card-info">
+                <h2 class="game-name">Cyber Race</h2>
+                <div class="game-status">Скоро</div>
+                <a href="cyber-race.html" class="free-btn">Бесплатно</a>
+              </div>
+            </div>
+
+            <div class="card-content">
+              <img src="https://i.ibb.co/4NVBPXT/game3.jpg" class="big-img" />
+              <div class="card-info">
+                <h2 class="game-name">Pixel Battle</h2>
+                <div class="game-status">Уже доступно</div>
+                <a href="pixel-battle.html" class="free-btn">Бесплатно</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="arrow-btn next">▶</button>
+      </div>
+
+      <div class="dots" id="slider-dots"></div>
+
+      <h1 class="home-title">Скидки</h1>
+      <div class="sales-slider-wrapper">
+        <button class="arrow-btn prev-sale">◀</button>
+        <div class="sales-slider-container">
+          <div class="sales-slider">
+            <div class="sale-card">
+              <img
+                src="https://i.ytimg.com/vi/_CoCMcURTeA/maxresdefault.jpg"
+                class="sale-img"
+              />
+              <div class="sale-prices">
+                <div class="old">3500 руб.</div>
+                <div class="new">350 руб.</div>
+              </div>
+            </div>
+            <div class="sale-card">
+              <img
+                src="https://i.playground.ru/p/evZpaecUNWFFBpgZR4OcYg.jpeg"
+                class="sale-img"
+              />
+              <div class="sale-prices">
+                <div class="old">1499 руб.</div>
+                <div class="new">99 руб.</div>
+              </div>
+            </div>
+            <div class="sale-card">
+              <img
+                src="https://img2.joyreactor.cc/pics/comment/full/обложки-Перевод-Игры-238220.jpeg"
+                class="sale-img"
+              />
+              <div class="sale-prices">
+                <div class="old">1489 руб.</div>
+                <div class="new">1100 руб.</div>
+              </div>
+            </div>
+            <div class="sale-card">
+              <img src="https://i.ibb.co/3rfCbNk/game1.jpg" class="sale-img" />
+              <div class="sale-prices">
+                <div class="old">1999 руб.</div>
+                <div class="new">499 руб.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="arrow-btn next-sale">▶</button>
+      </div>
+
+      <div class="dots" id="sales-dots"></div>
+
+      <h1 class="home-title">Список игр и цен</h1>
+      <div class="price-list">
+        <div class="price-item">
+          <img
+            src="https://i.ytimg.com/vi/W1gTb4Hi9ig/maxresdefault.jpg"
+            class="price-img"
+          />
+          <span class="game-name">S.T.A.L.K.E.R 2077</span>
+          <span class="game-price">129 РУБ.</span>
+        </div>
+        <div class="price-item">
+          <img
+            src="https://i.ytimg.com/vi/1RDJd7d3ZN8/maxresdefault.jpg"
+            class="price-img"
+          />
+          <span class="game-name">Симулятор Военного Полигона</span>
+          <span class="game-price">1499 РУБ.</span>
+        </div>
+        <div class="price-item">
+          <img
+            src="https://avatars.mds.yandex.net/i?id=99f6b161dca40d8ec67990aac759bfaa_l-5507408-images-thumbs&n=13"
+            class="price-img"
+          />
+          <span class="game-name">ПАРКУР ВЫЖИВАНИЕ</span>
+          <span class="game-price">718 РУБ.</span>
+        </div>
+        <div class="price-item">
+          <img
+            src="https://coop-land.ru/uploads/posts/2023-05/1685354112_2.jpg"
+            class="price-img"
+          />
+          <span class="game-name">СИМУЛЯТОР СТРОИТЕЛЯ</span>
+          <span class="game-price">881 РУБ.</span>
+        </div>
+        <div class="price-item">
+          <img
+            src="https://i.ytimg.com/vi/hgeUAcDaR-k/maxresdefault.jpg"
+            class="price-img"
+          />
+          <span class="game-name">ПОБЕГ ОТ ГУСТАВА</span>
+          <span class="game-price">БЕСПЛАТНО</span>
+        </div>
+        <div class="price-item">
+          <img
+            src="https://img.goodfon.ru/wallpaper/nbig/9/ca/badfon-skoda-fabia-rally-wrc-avto-2575.webp"
+            class="price-img"
+          />
+          <span class="game-name">БЕЛОГОНКИ БЕЛЫХ</span>
+          <span class="game-price">698 РУБ.</span>
+        </div>
+        <div class="price-item">
+          <img
+            src="https://i.ytimg.com/vi/OKKT5LUcohM/maxresdefault.jpg"
+            class="price-img"
+          />
+          <span class="game-name">P.E.P.O</span>
+          <span class="game-price">31 РУБ.</span>
+        </div>
+        <div class="price-item">
+          <img
+            src="https://sm1.aminoapps.com/7724/c08bf3bcc69b7381f0b59647107e818abb770dfer2-1500-1500v2_00.jpg"
+            class="price-img"
+          />
+          <span class="game-name">ПЕ4КИН</span>
+          <span class="game-price">180 РУБ.</span>
+        </div>
+        <div class="price-item">
+          <img
+            src="https://img2.joyreactor.cc/pics/comment/full/обложки-Перевод-Игры-238151.jpeg"
+            class="price-img"
+          />
+          <span class="game-name">УДАРНИК</span>
+          <span class="game-price">БЕСПЛАТНО</span>
+        </div>
+        <div class="price-item">
+          <img
+            src="https://cdn6.aptoide.com/imgs/6/3/d/63d24bbc9312249ce44760bdcf63fc1c_fgraphic.png"
+            class="price-img"
+          />
+          <span class="game-name">ТЕРРАКРАФТ</span>
+          <span class="game-price">99 РУБ.</span>
+        </div>
+        <div class="price-item">
+          <img
+            src="https://pics.craiyon.com/2023-07-25/ae6a37babd4f4eef80bb57eb8265e16c.webp"
+            class="price-img"
+          />
+          <span class="game-name">КОМАНДА 3</span>
+          <span class="game-price">3599 РУБ.</span>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      © 2025 FORTY. Все права сохранены. Политика конфиденциальности | Возвраты
+      | Cookie
+    </footer>
+
+    <script src="slider.js"></script>
+  </body>
+</html>
